@@ -18,10 +18,15 @@ class SkeletonHost
         return $this->placeholder();
     }
 
-    /** @return list<string> */
+    /**
+     * Both entry forms at once: bare labels and a `label => alignment` pair, like a live
+     * table whose numeric column is end-aligned.
+     *
+     * @return array<int|string, string>
+     */
     protected function skeletonColumns(): array
     {
-        return ['Name', 'Role', 'Commits'];
+        return ['Name', 'Role', 'Commits' => 'end'];
     }
 
     protected function skeletonRows(): int

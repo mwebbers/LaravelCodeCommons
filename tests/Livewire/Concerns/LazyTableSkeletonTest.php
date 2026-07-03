@@ -10,8 +10,10 @@ final class LazyTableSkeletonTest extends TestCase
     {
         $view = (new SkeletonHost)->placeholderView();
 
+        // The columns arrive untouched — normalizing the two entry forms (bare label,
+        // `label => alignment` pair) is the app-provided view's job, not the concern's.
         $this->assertSame('livewire.placeholders.table', $view->name());
-        $this->assertSame(['Name', 'Role', 'Commits'], $view->getData()['columns']);
+        $this->assertSame(['Name', 'Role', 'Commits' => 'end'], $view->getData()['columns']);
         $this->assertSame(8, $view->getData()['rows']);
     }
 
@@ -19,8 +21,10 @@ final class LazyTableSkeletonTest extends TestCase
     {
         $html = (new SkeletonHost)->placeholderView()->render();
 
-        // The skeleton uses the live table's real headers so its columns auto-size (no layout shift).
-        $this->assertStringContainsString('Name', $html);
-        $this->assertStringContainsString('Commits', $html);
+        // The skeleton uses the live table's real headers so its columns auto-size (no layout
+        // shift). In a `label => alignment` pair the KEY is the header: 'Commits' renders
+        // end-aligned, exactly where the live table puts it — never its alignment value.
+        $this->assertStringContainsString('<span data-align="start">Name</span>', $html);
+        $this->assertStringContainsString('<span data-align="end">Commits</span>', $html);
     }
 }
