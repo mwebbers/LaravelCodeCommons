@@ -11,6 +11,7 @@
         "livewire/livewire": "^4.3"
     },
     "require-dev": {
+        "infection/infection": "^0.34",
         "laravel/pint": "^1.27",
         "orchestra/testbench": "^11.1",
         "phpstan/phpstan": "^2.1",
@@ -27,6 +28,9 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true
+        },
         "platform": {
             "php": "8.3.0"
         },
@@ -35,7 +39,11 @@
     "scripts": {
         "test": "phpunit",
         "lint": "pint --test",
-        "analyse": "phpstan analyse --memory-limit=1G"
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "infection": [
+            "Composer\\Config::disableProcessTimeout",
+            "infection --threads=4"
+        ]
     },
     "minimum-stability": "stable",
     "prefer-stable": true
