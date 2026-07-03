@@ -10,10 +10,23 @@ annotated git tag must match.
 
 ### Planned
 
-- `Livewire\Concerns\WithCollectionPagination` and `LazyTableSkeleton` (need a Livewire/Testbench
-  harness to test in a package context).
 - A `DuskTestCase` base for the family's browser smoke tests.
 - Publish to Packagist so consumers can drop the VCS `repositories` entry.
+
+## [0.2.0]
+
+### Added
+
+- **`Livewire\Concerns\WithCollectionPagination`** — paginates an in-memory collection at `perPage()`
+  rows, composing `WithCollectionSorting`, and resets to page 1 when the sort changes. Generalized
+  from Cadence's `PaginatesTickets`.
+- **`Livewire\Concerns\LazyTableSkeleton`** — a `#[Lazy]` table's placeholder that renders the page's
+  real column headers (so its columns auto-size like the live table). The placeholder view is
+  app-provided; the new `skeletonView()` method makes the view name overridable.
+- A **Testbench harness** (`orchestra/testbench`) so the Livewire-runtime concerns are tested for
+  real (page state, page-reset-on-sort, the resolved placeholder view). The package now requires
+  `livewire/livewire`; the dependency-light pieces (Json, ScopeCoverage, WithCollectionSorting,
+  TableRow) still test without booting an app.
 
 ## [0.1.0]
 
