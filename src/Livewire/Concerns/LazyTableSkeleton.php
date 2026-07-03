@@ -34,7 +34,14 @@ trait LazyTableSkeleton
      * The live table's column headers, in order, so the skeleton's columns size like the real ones.
      * A host overrides this to match its table.
      *
-     * @return list<string>
+     * An entry is either a bare label (`'Name'`) or a `label => alignment` pair
+     * (`'Commits' => 'end'`, one of `'start'|'center'|'end'`), so a column the live table aligns
+     * differently starts exactly where it will end up — the app-provided view normalizes both
+     * forms; the concern passes the array through untouched. Caveat: a purely numeric label
+     * (`'2024'`) cannot carry an alignment pair, because PHP coerces such array keys to int and
+     * the entry would read as a bare label — its alignment value — instead.
+     *
+     * @return array<int|string, string>
      */
     protected function skeletonColumns(): array
     {

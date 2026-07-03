@@ -13,6 +13,19 @@ annotated git tag must match.
 - Infection mutation testing over the package source (`composer infection`, plus a scheduled/manual
   `mutation` workflow). It is a periodic signal, not the blocking gate — the measured baseline is
   100% mutation code coverage at 74% Covered Code MSI (thresholds set to 70).
+- **`Livewire\Concerns\LazyTableSkeleton`** — `skeletonColumns()` accepts `label => alignment`
+  pairs (`'start'|'center'|'end'`) alongside bare labels: `array<int|string, string>` instead of
+  `list<string>`, so a column the live table end-aligns starts exactly where it will end up. The
+  app-provided view normalizes both forms; the concern passes the array through untouched. Caveat:
+  a purely numeric label (`'2024'`) cannot carry an alignment pair — PHP coerces such keys to int.
+  Harvested from LaravelCodeStructure's 1.9.0 no-shift-skeleton work.
+
+### Fixed
+
+- **`Livewire\Concerns\WithCollectionPagination`** — an out-of-range `?page=` now clamps to the
+  last real page instead of rendering an empty table (misleading: the data exists, just not 99
+  pages of it). The `?page=` param is user-controlled input, so `paginate()` bounds it on both
+  sides. Harvested from the LaravelCodeStructure 1.9.0 session.
 
 ### Planned
 
