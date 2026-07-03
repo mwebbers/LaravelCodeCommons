@@ -1,5 +1,7 @@
 /vendor/
 /.phpunit.cache/
+/.infection/
+infection.log
 composer.lock
 .phpunit.result.cache
 .DS_Store

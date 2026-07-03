@@ -70,8 +70,10 @@ keeps the example clean).
 ### `Livewire\Concerns\WithCollectionPagination` — paginate an in-memory collection
 
 Composes the sort concern with Livewire's pagination: it paginates an already-derived collection at
-`perPage()` rows, renders one page at a time, and **resets to page 1 when the sort changes**. For a
-query builder use Livewire's native `->paginate()`; this is for a set you already hold in memory.
+`perPage()` rows, renders one page at a time, and **resets to page 1 when the sort changes**. An
+**out-of-range `?page=` clamps to the last real page** — the URL is user-controlled input, and the
+data exists (just not 99 pages of it), so an empty table would be misleading. For a query builder
+use Livewire's native `->paginate()`; this is for a set you already hold in memory.
 
 ### `Livewire\Concerns\LazyTableSkeleton` — a `#[Lazy]` table's placeholder
 
@@ -79,7 +81,10 @@ Pairs with `#[Lazy]` to render a skeleton while the table body hydrates in a sec
 the page's **real column headers** so the skeleton auto-sizes like the live table (no layout shift).
 The placeholder **view is app-provided** — ship a `livewire.placeholders.table` Blade view (it
 carries your design system, e.g. Flux), or override `skeletonView()` to point at your own; a host
-overrides `skeletonColumns()` / `skeletonRows()` to match its table.
+overrides `skeletonColumns()` / `skeletonRows()` to match its table. A `skeletonColumns()` entry is
+either a bare label or a `'label' => alignment` pair (`start`/`center`/`end`), so a column the live
+table end-aligns starts where it will end up — the view normalizes both forms. One caveat: a purely
+numeric label (`'2024'`) cannot carry an alignment pair, because PHP coerces such array keys to int.
 
 ### `Testing\ScopeCoverage` — the SCOPE↔test traceability checker
 

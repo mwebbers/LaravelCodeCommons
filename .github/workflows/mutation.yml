@@ -1,0 +1,32 @@
+name: mutation
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+jobs:
+  infection:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: pcov
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: |
+          n=0
+          until [ "$n" -ge 3 ]; do
+            composer install --no-progress --prefer-dist && break
+            n=$((n + 1))
+            echo "::warning::composer install attempt $n/3 failed — retrying in $((n * 5))s"
+            sleep "$((n * 5))"
+          done
+
+      - name: Mutation testing (Infection)
+        run: composer infection
