@@ -21,7 +21,7 @@ Until it is on Packagist, add the repository to the consuming app's `composer.js
 ]
 ```
 
-## What's in it (v0.1)
+## What's in it
 
 ### `Support\Json` — typed `mixed` narrowing
 
@@ -67,6 +67,20 @@ class Tickets extends Component
 `callable(TValue)` does not narrow an array-shape closure param under level 10, so a typed object
 keeps the example clean).
 
+### `Livewire\Concerns\WithCollectionPagination` — paginate an in-memory collection
+
+Composes the sort concern with Livewire's pagination: it paginates an already-derived collection at
+`perPage()` rows, renders one page at a time, and **resets to page 1 when the sort changes**. For a
+query builder use Livewire's native `->paginate()`; this is for a set you already hold in memory.
+
+### `Livewire\Concerns\LazyTableSkeleton` — a `#[Lazy]` table's placeholder
+
+Pairs with `#[Lazy]` to render a skeleton while the table body hydrates in a second request. It uses
+the page's **real column headers** so the skeleton auto-sizes like the live table (no layout shift).
+The placeholder **view is app-provided** — ship a `livewire.placeholders.table` Blade view (it
+carries your design system, e.g. Flux), or override `skeletonView()` to point at your own; a host
+overrides `skeletonColumns()` / `skeletonRows()` to match its table.
+
 ### `Testing\ScopeCoverage` — the SCOPE↔test traceability checker
 
 The family's coverage gate, extracted so every app runs the **same** checker instead of a
@@ -94,9 +108,8 @@ final class ScopeCoverageTest extends TestCase
 
 ## Roadmap
 
-v0.1 ships the dependency-light core. Planned for later minors, once each is behind a Testbench
-harness so it stays gate-green here: `WithCollectionPagination` + `LazyTableSkeleton` (need the
-Livewire runtime), and a `DuskTestCase` base. See `CHANGELOG.md`.
+Planned for later minors: a `DuskTestCase` base for the family's browser smoke tests, and publishing
+to Packagist (so consumers can drop the VCS `repositories` entry). See `CHANGELOG.md`.
 
 ## Development
 

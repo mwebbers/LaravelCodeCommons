@@ -18,4 +18,9 @@
             <directory>src</directory>
         </include>
     </source>
+    <php>
+        <!-- A fixed key so the Testbench app (Livewire's render pipeline encrypts) boots; the
+             value is base64 of a 32-byte constant, deterministic across runs. -->
+        <env name="APP_KEY" value="base64:MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY="/>
+    </php>
 </phpunit>
