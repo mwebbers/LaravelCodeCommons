@@ -8,6 +8,13 @@ annotated git tag must match.
 
 ## [Unreleased]
 
+### Planned
+
+- A `DuskTestCase` base for the family's browser smoke tests.
+- Publish to Packagist so consumers can drop the VCS `repositories` entry.
+
+## [0.3.0]
+
 ### Changed
 
 - Infection mutation testing over the package source (`composer infection`, plus a scheduled/manual
@@ -26,11 +33,6 @@ annotated git tag must match.
   last real page instead of rendering an empty table (misleading: the data exists, just not 99
   pages of it). The `?page=` param is user-controlled input, so `paginate()` bounds it on both
   sides. Harvested from the LaravelCodeStructure 1.9.0 session.
-
-### Planned
-
-- A `DuskTestCase` base for the family's browser smoke tests.
-- Publish to Packagist so consumers can drop the VCS `repositories` entry.
 
 ## [0.2.0]
 
