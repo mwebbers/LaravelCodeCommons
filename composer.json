@@ -1,0 +1,40 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "mwebbers/laravel-code-commons",
+    "description": "Shared conventions for the mwebbers Laravel family: typed mixed-narrowing (Json), a reusable stable sortable-table concern + TableRow DTO, and a SCOPE<->test coverage checker. The PHP sibling of the family's Python ClaudeCodeCommons.",
+    "keywords": ["laravel", "livewire", "commons", "scope-driven", "structure"],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^13.8"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.27",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.5.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mwebbers\\LaravelCodeCommons\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mwebbers\\LaravelCodeCommons\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.0"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "pint --test",
+        "analyse": "phpstan analyse --memory-limit=1G"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

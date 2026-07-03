@@ -1,0 +1,38 @@
+name: tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: |
+          n=0
+          until [ "$n" -ge 3 ]; do
+            composer install --no-progress --prefer-dist && break
+            n=$((n + 1))
+            echo "::warning::composer install attempt $n/3 failed — retrying in $((n * 5))s"
+            sleep "$((n * 5))"
+          done
+
+      - name: Lint (Pint)
+        run: ./vendor/bin/pint --test
+
+      - name: Static analysis (PHPStan level 10)
+        run: ./vendor/bin/phpstan analyse --no-progress --memory-limit=1G
+
+      - name: Tests (PHPUnit)
+        run: ./vendor/bin/phpunit
