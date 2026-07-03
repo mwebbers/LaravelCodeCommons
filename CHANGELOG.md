@@ -8,6 +8,12 @@ annotated git tag must match.
 
 ## [Unreleased]
 
+### Changed
+
+- Infection mutation testing over the package source (`composer infection`, plus a scheduled/manual
+  `mutation` workflow). It is a periodic signal, not the blocking gate — the measured baseline is
+  100% mutation code coverage at 74% Covered Code MSI (thresholds set to 70).
+
 ### Planned
 
 - A `DuskTestCase` base for the family's browser smoke tests.
