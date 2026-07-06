@@ -1,5 +1,5 @@
 parameters:
-    # Level 10 (the max), the family floor. Plain phpstan/phpstan, not larastan: this is a
+    # Level 10 (the max), the analysis floor. Plain phpstan/phpstan, not larastan: this is a
     # library depending only on illuminate/support, not a booted Laravel app, so larastan's
     # framework stubs can't load here. The one `mixed` boundary (Json) narrows explicitly.
     level: 10

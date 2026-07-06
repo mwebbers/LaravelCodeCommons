@@ -1,9 +1,8 @@
 # LaravelCodeCommons
 
-Shared conventions for the **mwebbers Laravel family** (LaravelCodeStructure, LaravelRDW,
-Cadence, …), packaged once instead of hand-copied per repo. The PHP sibling of the family's
-Python `ClaudeCodeCommons`: the same file lived in three-to-four near-identical copies that
-drifted; this is the single canonical home.
+Shared Laravel/Livewire conventions, packaged once instead of hand-copied per project. These
+pieces used to live as near-identical copies across consuming apps and drifted; this package is
+the single canonical home.
 
 Requires **PHP 8.3+** and `illuminate/support ^13.8` (Laravel 13). MIT-licensed.
 
@@ -88,7 +87,7 @@ numeric label (`'2024'`) cannot carry an alignment pair, because PHP coerces suc
 
 ### `Testing\ScopeCoverage` — the SCOPE↔test traceability checker
 
-The family's coverage gate, extracted so every app runs the **same** checker instead of a
+A coverage gate, extracted so every consuming app runs the **same** checker instead of a
 hand-copied `ScopeCoverageTest`. It reads the feature IDs from a `SCOPE.md` `## Features` section
 and the `#[Group('F-00X')]` references across a tests directory, and reports either side's gaps.
 
@@ -113,7 +112,7 @@ final class ScopeCoverageTest extends TestCase
 
 ## Roadmap
 
-Planned for later minors: a `DuskTestCase` base for the family's browser smoke tests, and publishing
+Planned for later minors: a `DuskTestCase` base for browser smoke tests, and publishing
 to Packagist (so consumers can drop the VCS `repositories` entry). See `CHANGELOG.md`.
 
 ## Development

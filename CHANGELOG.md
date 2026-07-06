@@ -10,8 +10,15 @@ annotated git tag must match.
 
 ### Planned
 
-- A `DuskTestCase` base for the family's browser smoke tests.
+- A `DuskTestCase` base for browser smoke tests.
 - Publish to Packagist so consumers can drop the VCS `repositories` entry.
+
+## [0.3.1]
+
+### Changed
+
+- Documentation and package metadata rewritten to be self-contained: descriptions no longer
+  reference specific consuming apps, sibling packages, or their maintainer.
 
 ## [0.3.0]
 
@@ -25,22 +32,20 @@ annotated git tag must match.
   `list<string>`, so a column the live table end-aligns starts exactly where it will end up. The
   app-provided view normalizes both forms; the concern passes the array through untouched. Caveat:
   a purely numeric label (`'2024'`) cannot carry an alignment pair — PHP coerces such keys to int.
-  Harvested from LaravelCodeStructure's 1.9.0 no-shift-skeleton work.
 
 ### Fixed
 
 - **`Livewire\Concerns\WithCollectionPagination`** — an out-of-range `?page=` now clamps to the
   last real page instead of rendering an empty table (misleading: the data exists, just not 99
   pages of it). The `?page=` param is user-controlled input, so `paginate()` bounds it on both
-  sides. Harvested from the LaravelCodeStructure 1.9.0 session.
+  sides.
 
 ## [0.2.0]
 
 ### Added
 
 - **`Livewire\Concerns\WithCollectionPagination`** — paginates an in-memory collection at `perPage()`
-  rows, composing `WithCollectionSorting`, and resets to page 1 when the sort changes. Generalized
-  from Cadence's `PaginatesTickets`.
+  rows, composing `WithCollectionSorting`, and resets to page 1 when the sort changes.
 - **`Livewire\Concerns\LazyTableSkeleton`** — a `#[Lazy]` table's placeholder that renders the page's
   real column headers (so its columns auto-size like the live table). The placeholder view is
   app-provided; the new `skeletonView()` method makes the view name overridable.
@@ -55,11 +60,11 @@ annotated git tag must match.
 
 - **`Support\Json`** — typed `mixed`-narrowing accessors (`obj`/`objOrNull`/`rows`/`str`/
   `nullableStr`/`int`/`float`/`bool`/`strings`), the single sanctioned JSON/`config()` boundary
-  that keeps a consumer at PHPStan level 10. Extracted from the family's duplicated copies.
+  that keeps a consumer at PHPStan level 10. Extracted from duplicated per-app copies.
 - **`Livewire\Concerns\WithCollectionSorting`** — a model-agnostic click-to-sort concern over an
   in-memory collection, **stable in both directions** (equal-key rows keep their natural order;
   descending uses `sortByDesc`, not a `reverse()` of the ascending sort). Plus **`Livewire\TableRow`**,
   the typed reference row shape to sort over.
-- **`Testing\ScopeCoverage`** — the family's SCOPE↔test traceability checker, so every app runs
+- **`Testing\ScopeCoverage`** — a SCOPE↔test traceability checker, so every app runs
   one shared implementation instead of a hand-copied `ScopeCoverageTest`.
 - Own gate: PHPUnit, Pint, PHPStan level 10, GitHub Actions CI. MIT license.
