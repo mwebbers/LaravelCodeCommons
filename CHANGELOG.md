@@ -8,15 +8,17 @@ annotated git tag must match.
 
 ## [Unreleased]
 
-### Changed
-
-- Documentation and package metadata rewritten to be self-contained: descriptions no longer
-  reference specific consuming apps, sibling packages, or their maintainer.
-
 ### Planned
 
 - A `DuskTestCase` base for browser smoke tests.
 - Publish to Packagist so consumers can drop the VCS `repositories` entry.
+
+## [0.3.1]
+
+### Changed
+
+- Documentation and package metadata rewritten to be self-contained: descriptions no longer
+  reference specific consuming apps, sibling packages, or their maintainer.
 
 ## [0.3.0]
 
