@@ -3,7 +3,7 @@
 namespace Mwebbers\LaravelCodeCommons\Testing;
 
 /**
- * The family's SCOPE<->test traceability checker, extracted so every app runs the SAME gate
+ * A SCOPE<->test traceability checker, extracted so every consuming app runs the SAME gate
  * instead of a hand-copied `ScopeCoverageTest`. It reads every feature ID from the "## Features"
  * section of a `SCOPE.md` and every ID referenced by a `#[Group("F-00X")]` attribute (or
  * `@group F-00X`) across a tests directory, and reports either side's IDs the other lacks:

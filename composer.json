@@ -1,7 +1,7 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
     "name": "mwebbers/laravel-code-commons",
-    "description": "Shared conventions for the mwebbers Laravel family: typed mixed-narrowing (Json), a reusable stable sortable-table concern + TableRow DTO, and a SCOPE<->test coverage checker. The PHP sibling of the family's Python ClaudeCodeCommons.",
+    "description": "Shared Laravel/Livewire conventions: typed mixed-narrowing (Json), reusable stable sortable-table and pagination concerns + TableRow DTO, a lazy-table skeleton, and a SCOPE<->test coverage checker.",
     "keywords": ["laravel", "livewire", "commons", "scope-driven", "structure"],
     "license": "MIT",
     "type": "library",

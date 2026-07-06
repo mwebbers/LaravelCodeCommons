@@ -1,8 +1,8 @@
 # Contributing
 
-`LaravelCodeCommons` is a small library: the canonical home for conventions shared across the
-mwebbers Laravel family. Keep it dependency-light and framework-version aligned with the family
-(Laravel 13 / PHP 8.3).
+`LaravelCodeCommons` is a small library: the canonical home for conventions shared across its
+consuming Laravel apps. Keep it dependency-light and framework-version aligned with those
+consumers (Laravel 13 / PHP 8.3).
 
 ## The gate
 
@@ -20,7 +20,7 @@ that is what keeps the analysis floor at level 10.
 ## Adding a piece
 
 Only extract something into this package once it is genuinely shared (it already exists, near-identical,
-in two or more family repos) and is either dependency-light or can be tested here behind a Testbench
+in two or more consuming apps) and is either dependency-light or can be tested here behind a Testbench
 harness. UI pieces that need the Livewire runtime or Flux Pro credentials go behind such a harness so
 the package stays installable and gate-green without them.
 
