@@ -32,7 +32,13 @@ production line; every commit on it is a tagged release. Cut a release on a `rel
 the gate, merge into `main` **and** back into `develop`, tag `vX.Y.Z`, and
 `git push origin main develop --tags`. A library ships no `composer.lock`.
 
+From **1.0.0** the package follows semantic versioning: everything under `src/` is public API, and
+a breaking change to it lands only in a new major — preceded where practical by an `@deprecated`
+tag in the last minor.
+
 ## Consuming a new version
 
-Downstream apps require this via a VCS `repositories` entry until it is on Packagist. When adopting a
-new minor, run the consumer's own gate — the shared code is behavioural, so its tests are the safety net.
+Downstream apps require `mwebbers/laravel-code-commons` `^1.0` from Packagist — a tagged release
+is picked up automatically via the GitHub hook, so no VCS `repositories` entry is needed. When
+adopting a new version, run the consumer's own gate — the shared code is behavioural, so its tests
+are the safety net.

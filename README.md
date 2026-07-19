@@ -12,13 +12,15 @@ Requires **PHP 8.3+** and `illuminate/support ^13.8` (Laravel 13). MIT-licensed.
 composer require mwebbers/laravel-code-commons
 ```
 
-Until it is on Packagist, add the repository to the consuming app's `composer.json`:
+The package is on Packagist and a tagged release is picked up automatically, so no VCS
+`repositories` entry is needed — consumers that still carry one can drop it.
 
-```json
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/mwebbers/LaravelCodeCommons" }
-]
-```
+## Versioning
+
+From **1.0.0** this package follows [semantic versioning](https://semver.org/): everything under
+`src/` is public API, and breaking changes to it land only in a new major — preceded where
+practical by an `@deprecated` tag in the last minor. New features arrive in minors, fixes in
+patches. Consumers require `^1.0`.
 
 ## What's in it
 
@@ -61,10 +63,6 @@ class Tickets extends Component
     }
 }
 ```
-
-`Livewire\TableRow` is a tiny typed row DTO shipped as the reference shape to sort over (a generic
-`callable(TValue)` does not narrow an array-shape closure param under level 10, so a typed object
-keeps the example clean).
 
 ### `Livewire\Concerns\WithCollectionPagination` — paginate an in-memory collection
 
@@ -112,8 +110,7 @@ final class ScopeCoverageTest extends TestCase
 
 ## Roadmap
 
-Planned for later minors: a `DuskTestCase` base for browser smoke tests, and publishing
-to Packagist (so consumers can drop the VCS `repositories` entry). See `CHANGELOG.md`.
+Planned for later minors: a `DuskTestCase` base for browser smoke tests. See `CHANGELOG.md`.
 
 ## Development
 

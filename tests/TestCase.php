@@ -9,8 +9,8 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
  * Base for the tests that need a booted Laravel app + the Livewire runtime (the pagination and
- * skeleton concerns). The dependency-light tests (Json, ScopeCoverage, WithCollectionSorting,
- * TableRow) extend PHPUnit's TestCase directly and do not pay for this.
+ * skeleton concerns). The dependency-light tests (Json, ScopeCoverage, WithCollectionSorting)
+ * extend PHPUnit's TestCase directly and do not pay for this.
  */
 abstract class TestCase extends Orchestra
 {

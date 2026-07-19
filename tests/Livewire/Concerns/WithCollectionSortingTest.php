@@ -3,23 +3,23 @@
 namespace Mwebbers\LaravelCodeCommons\Tests\Livewire\Concerns;
 
 use Illuminate\Support\Collection;
-use Mwebbers\LaravelCodeCommons\Livewire\TableRow;
+use Mwebbers\LaravelCodeCommons\Tests\Fixtures\Row;
 use PHPUnit\Framework\TestCase;
 
 final class WithCollectionSortingTest extends TestCase
 {
     /**
-     * A, B, C share 1 commit in this natural order; D has 2. (role is irrelevant here.)
+     * A, B, C share 1 commit in this natural order; D has 2.
      *
-     * @return Collection<int, TableRow>
+     * @return Collection<int, Row>
      */
     private function items(): Collection
     {
         return collect([
-            new TableRow('A', 'x', 1),
-            new TableRow('B', 'x', 1),
-            new TableRow('C', 'x', 1),
-            new TableRow('D', 'x', 2),
+            new Row('A', 1),
+            new Row('B', 1),
+            new Row('C', 1),
+            new Row('D', 2),
         ]);
     }
 
