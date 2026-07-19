@@ -11,7 +11,21 @@ annotated git tag must match.
 ### Planned
 
 - A `DuskTestCase` base for browser smoke tests.
-- Publish to Packagist so consumers can drop the VCS `repositories` entry.
+
+## [1.0.0]
+
+### Removed
+
+- **BREAKING** — `Livewire\TableRow`, the demo row DTO. No consumer used it; the sorting tests
+  now sort over a local test fixture instead. From 1.0.0 everything under `src/` is public API
+  under the semver promise documented in the README.
+
+### Changed
+
+- The package is on Packagist (tags are picked up automatically via the GitHub hook): README and
+  CONTRIBUTING no longer instruct a VCS `repositories` entry, and consumers require `^1.0`.
+- Versioning policy made explicit: from 1.0.0, semantic versioning — breaking changes only in
+  majors, preceded where practical by a deprecation in the last minor.
 
 ## [0.3.1]
 
