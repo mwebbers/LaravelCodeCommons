@@ -12,6 +12,8 @@ annotated git tag must match.
 
 - A `DuskTestCase` base for browser smoke tests.
 
+## [1.0.0]
+
 ### Removed
 
 - **BREAKING** — `Livewire\TableRow`, the demo row DTO. No consumer used it; the sorting tests
