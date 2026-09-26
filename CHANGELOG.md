@@ -8,6 +8,14 @@ annotated git tag must match.
 
 ## [Unreleased]
 
+### Changed
+
+- **Test suite kept green on PHPStan 2.2.16** (tests only, no API change). The null-column and
+  unknown-column cases of `WithCollectionSortingTest` are now two tests with their own host:
+  PHPStan remembers the result of `$host->order(...)` across the `sortBy` assignment and flagged
+  the second `assertSame()` as always-true. Found during a local `composer update` (lock is not
+  committed for this package).
+
 ### Planned
 
 - A `DuskTestCase` base for browser smoke tests.
