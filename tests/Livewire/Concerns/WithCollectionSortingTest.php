@@ -39,15 +39,18 @@ final class WithCollectionSortingTest extends TestCase
         $this->assertSame('asc', $host->sortDirection);
     }
 
-    public function test_a_null_or_unknown_column_keeps_the_natural_order(): void
+    public function test_a_null_column_keeps_the_natural_order(): void
     {
         $host = new SortingHost;
 
-        // No sort set.
         $this->assertSame(['A', 'B', 'C', 'D'], $host->order($this->items())->pluck('name')->all());
+    }
 
-        // A column with no extractor in the map.
-        $host->sortBy = 'unmapped';
+    public function test_an_unknown_column_keeps_the_natural_order(): void
+    {
+        $host = new SortingHost;
+        $host->sortBy = 'unmapped'; // no extractor in the map
+
         $this->assertSame(['A', 'B', 'C', 'D'], $host->order($this->items())->pluck('name')->all());
     }
 
