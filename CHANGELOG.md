@@ -8,6 +8,19 @@ annotated git tag must match.
 
 ## [Unreleased]
 
+### Planned
+
+- A `DuskTestCase` base for browser smoke tests.
+
+## [1.0.1]
+
+### Security
+
+- **`livewire/livewire` floor raised from `^4.3` to `^4.4.6`.** Livewire `<= 4.3.3` has a DOM-based
+  cross-site scripting advisory in client-side state handling. With the higher floor, no consumer
+  can resolve a vulnerable Livewire through this package. No API change; consumers already on
+  4.4.6+ are unaffected.
+
 ### Changed
 
 - **Test suite kept green on PHPStan 2.2.16** (tests only, no API change). The null-column and
@@ -15,10 +28,6 @@ annotated git tag must match.
   PHPStan remembers the result of `$host->order(...)` across the `sortBy` assignment and flagged
   the second `assertSame()` as always-true. Found during a local `composer update` (lock is not
   committed for this package).
-
-### Planned
-
-- A `DuskTestCase` base for browser smoke tests.
 
 ## [1.0.0]
 

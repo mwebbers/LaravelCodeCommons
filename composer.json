@@ -8,7 +8,7 @@
     "require": {
         "php": "^8.3",
         "illuminate/support": "^13.8",
-        "livewire/livewire": "^4.3"
+        "livewire/livewire": "^4.4.6"
     },
     "require-dev": {
         "infection/infection": "^0.34",
