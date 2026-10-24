@@ -12,6 +12,15 @@ annotated git tag must match.
 
 - A `DuskTestCase` base for browser smoke tests.
 
+## [1.0.2]
+
+### Security
+
+- **`livewire/livewire` floor raised from `^4.4.6` to `^4.4.8`.** Livewire `>= 4.3.0, < 4.4.8` has an
+  authorization bypass in `#[Authorize]` (GHSA-mhf7-xp6r-6qrc, published 23 October 2026). With the
+  higher floor, no consumer can resolve a vulnerable Livewire through this package. No API change;
+  consumers already on 4.4.8+ are unaffected.
+
 ## [1.0.1]
 
 ### Security
