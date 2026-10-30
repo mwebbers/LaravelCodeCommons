@@ -8,6 +8,10 @@ annotated git tag must match.
 
 ## [Unreleased]
 
+### Changed
+
+- **Infection 0.35** (dev dependency), was 0.34, the same line as the apps.
+
 ### Planned
 
 - A `DuskTestCase` base for browser smoke tests.
