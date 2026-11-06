@@ -8,6 +8,13 @@ annotated git tag must match.
 
 ## [Unreleased]
 
+### Added
+
+- **`Support\DescriptionKey`**: the domain or hostname a WeFact subscription description is for. Reads the key
+  after the label on the first line (`<b>Label:</b> key, key`, MiWebb's form since 2026-11), else its last
+  parentheses; normalizes to one spelling (lowercase, no trailing dot, IDN to punycode with `ext-intl`). Extracted
+  from Chord's `MatchKey` and Pulse's `DomainResolver`, which read it two ways.
+
 ### Changed
 
 - **Infection 0.35** (dev dependency), was 0.34, the same line as the apps.
