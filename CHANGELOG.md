@@ -8,6 +8,12 @@ annotated git tag must match.
 
 ## [Unreleased]
 
+### Planned
+
+- A `DuskTestCase` base for browser smoke tests.
+
+## [1.1.0]
+
 ### Added
 
 - **`Support\DescriptionKey`**: the domain or hostname a WeFact subscription description is for. Reads the key
@@ -18,10 +24,6 @@ annotated git tag must match.
 ### Changed
 
 - **Infection 0.35** (dev dependency), was 0.34, the same line as the apps.
-
-### Planned
-
-- A `DuskTestCase` base for browser smoke tests.
 
 ## [1.0.2]
 
