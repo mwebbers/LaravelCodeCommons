@@ -38,6 +38,20 @@ Json::int($config['limit'] ?? null, 50);           // int, numeric strings coerc
 Json::rows($response->json());                      // list<array> — non-array rows dropped
 ```
 
+### `Support\DescriptionKey` — the domain a WeFact description is for
+
+One reading of a subscription's key for every app that needs it (Pulse measures the product, Chord matches the
+money). The key sits right after the label on the first line, or, in the older form, between its last parentheses;
+several are separated by commas, and a list with one part that is no hostname gives nothing.
+
+```php
+use Mwebbers\LaravelCodeCommons\Support\DescriptionKey;
+
+DescriptionKey::keys('<b>WordPress onderhoud:</b> a.nl, b.a.nl');  // ['a.nl', 'b.a.nl']
+DescriptionKey::key('Webhosting: Standaard (Shop.Example.NL)');     // 'shop.example.nl' — one key or null
+DescriptionKey::normalize('Bücher.example.');                       // 'xn--bcher-kva.example' (needs ext-intl)
+```
+
 ### `Livewire\Concerns\WithCollectionSorting` — a stable sortable-table concern
 
 Click-to-sort for a Livewire table over an in-memory collection. Owns only the sort *state* and
